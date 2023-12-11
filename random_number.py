@@ -1,5 +1,6 @@
 import random
 from argparse import ArgumentParser
+import sys
 
 
 def gen(lower: int, upper: int) -> int:
@@ -7,9 +8,9 @@ def gen(lower: int, upper: int) -> int:
 
 def cli() -> None:
     parser = ArgumentParser()
-    parser.add_argument("--lower", type=int)
-    parser.add_argument("--upper", type=int)
+    parser.add_argument("-l", "--lower", type=int)
+    parser.add_argument("-u", "--upper", type=int)
 
     args = parser.parse_args()
-    num = gen(args.lower, args.upper)
+    num = gen(args.lower or 0, args.upper or sys.maxsize)
     print(num)
